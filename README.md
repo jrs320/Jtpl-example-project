@@ -1,7 +1,7 @@
 ## 项目说明
 
-    项目使用的是自己开发的前端框架 [Jtpl](https://github.com/jrs320/Jtpl) 实现。
-    开发方式跟vuejs 2.x单文件差不多。
+项目使用的是自己开发的前端框架 [Jtpl](https://github.com/jrs320/Jtpl) 实现。
+开发方式跟vuejs 2.x单文件差不多。
 
 ### 功能实现
 
