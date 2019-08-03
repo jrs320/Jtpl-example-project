@@ -1,0 +1,98 @@
+<template>
+  <div class="container">
+    <!-- 顶部统计 -->
+    <div class="stat">
+      <div class="item flex">
+        <i :class="icon icon-cog {{stat.building > 0 ? 'rotate' : ''}}"></i>
+        <i class="desc">Building</i>
+        <i class="total">{{stat.building}}</i>
+      </div>
+      <div class="item flex">
+        <i class="icon icon-coffee"></i>
+        <i class="desc">Idle</i>
+        <i class="total">{{stat.idle}}</i>
+      </div>
+      <div class="item item3 flex">
+        <div class="s-item flex">
+          <div class="name flex">ALL</div>
+          <div class="num flex">{{stat.all}}</div>
+        </div>
+        <div class="s-item flex">
+          <div class="name flex">PHYSICAL</div>
+          <div class="num flex">{{stat.physical}}</div>
+        </div>
+        <div class="s-item flex">
+          <div class="name flex">VIRTUAL</div>
+          <div class="num flex">{{stat.virtual}}</div>
+        </div>
+      </div>
+    </div>
+    <!-- tool section-->
+    <div class="tool">
+      <div :class="item flex {{listType == 0 ? 'on' : ''}}" @click="handleChangeList(0)">All</div>
+      <div :class="item flex {{listType == 1 ? 'on' : ''}}" @click="handleChangeList(1)">Physical</div>
+      <div :class="item flex {{listType == 2 ? 'on' : ''}}" @click="handleChangeList(2)">Virtual</div>
+      <div class="search flex justify-start">
+        <i class="icon icon-search"></i>
+        <input type="text" j-model="searchValue" />
+      </div>
+      <div class="layoutChange flex">
+        <i class="icon icon-th-card"></i>
+        <i class="icon icon-th-list on"></i>
+      </div>
+    </div>
+    <!-- list -->
+    <div class="list" >
+      <div class="wrapper">
+        <div class="list-item flex justify-start items-start" j-for="(item, index) in list">
+          <!-- 系统logo -->
+          <div class="osLogo flex flex-none">
+            <img :src="{{osLogos[item.os]}}" />
+          </div>
+          <!-- 右边info -->
+          <div class="info flex1 flex flex-column items-start">
+            <!-- 上行 -->
+            <div class="flex rowUp justify-start">
+              <div class="left flex justify-start ellipsis">
+                <i class="icon icon-desktop"></i>
+                <span class="name ellipsis">{{item.name}}</span>
+                <span :class="status status-{{item.status}}">{{item.status}}</span>
+              </div>
+              <div class="right flex justify-start ellipsis">
+                <i class="icon icon-info"></i>
+                <span>{{item.ip}}</span>
+                <i class="icon icon-folder"></i>
+                <span class="ellipsis">{{item.location}}</span>
+              </div>
+            </div>
+            <!-- 下行 resources -->
+            <div class="flex rowDown justify-between items-start">
+              <div class="flex flex1 justify-start items-start">
+                <div class="add flex" @click="handlePopup(index)">
+                  <i class="icon icon-plus"></i>
+                </div>
+                <div class="resources flex1 flex justify-start items-start">
+                  <div class="item flex" j-for="(reItem, reIndex) in item.resources">
+                    <span>{{reItem}}</span>
+                    <i class="icon icon-trash" @click="handleDelRes(item, reIndex)"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="deny flex" j-show="item.status == 'building'">
+                <i class="icon icon-deny"></i>
+                <span>Deny</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <popup @handleAddRes="handleAddRes" ref="popup"></popup>
+  </div>
+</template>
+
+<script>
+import './index.scss'
+import app from './index.js'
+export default app
+</script>

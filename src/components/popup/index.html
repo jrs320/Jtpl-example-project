@@ -1,0 +1,59 @@
+<template>
+  <div class="popup" j-show="isShow">
+    <div class="tip">
+      Separate multiple resource name with commas
+    </div>
+    <div class="input">
+      <input type="text" j-model="resources" />
+    </div>
+    <div class="buttons flex justify-start">
+      <div class="button btn-primary flex" @click="handleAddRes">Add Resources</div> 
+      <div class="button btn-cancel flex" @click="handleClose">Cancel</div> 
+    </div>
+    <i class="icon icon-close" @click="handleClose"></i>
+    <i class="angle"></i>
+  </div>
+</template>
+
+<script>
+import './index.scss'
+export default {
+  data() {
+    return {
+      isShow: false,
+      resources: '',
+      index: 0
+    }
+  },
+  mounted() {
+
+  },
+  methods: {
+    show(opts = {}) {
+      const { 
+        target,
+        index
+      } = opts
+
+      if (target) {
+        target.appendChild(this.$el.el)
+      }
+      this.data.index = index
+      this.data.resources = ''
+      this.data.isShow = true
+    },
+    handleAddRes() {
+      let { resources = '', index } = this.data
+      resources = resources.trim()
+      if (resources) {
+        this.$emit('handleAddRes', resources.split(','), index)
+        this.handleClose()
+      }
+    },
+    handleClose() {
+      this.data.resources = ''
+      this.data.isShow = false
+    }
+  }
+}
+</script>

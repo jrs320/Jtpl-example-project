@@ -1,0 +1,127 @@
+<template>
+  <div class="main">
+    <!-- 顶部 -->
+    <div class="top">
+      <div class="wrapper flex">
+        <img class="logo" :src="{{logoUrl}}" />
+        <div class="user flex" @click="handleClickHeader" ref="user">
+          <img class="header" :src="{{headerUrl}}" />
+          <i :class="icon {{cls_angle}}"></i>
+          <!-- 下拉框 -->
+          <div :class="dropdown" j-show="isExtendUser">
+            <div class="item flex justify-start">
+              <i class="icon icon-id-card"></i>
+              <span>Profile</span>
+            </div>
+            <div class="item flex justify-start">
+              <i class="icon icon-sign-in"></i>
+              <span>Sign Out</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 中间 -->
+    <div class="center">
+      <div class="wrapper">
+        <!-- 菜单 -->
+        <div class="sideBar">
+          <div class="menu">
+              <div :class="menu-item flex justify-start {{cls_menu_on == 1 ? 'on' : ''}}" 
+              @click="handleClickMenu(1)">
+              <i class="icon icon-dashboard"></i>
+              <span class="text">DASHBOARD</span>
+            </div>
+            <div :class="menu-item flex justify-start {{cls_menu_on == 2 ? 'on' : ''}}" 
+              @click="handleClickMenu(2)">
+              <i class="icon icon-sitemap"></i>
+              <span class="text">AGENT</span>
+            </div>
+            <div :class="menu-item flex justify-start {{cls_menu_on == 3 ? 'on' : ''}}" 
+              @click="handleClickMenu(3)">
+              <i class="icon icon-boat"></i>
+              <span class="text">MY CRUISE</span>
+            </div>
+            <div :class="menu-item flex justify-start {{cls_menu_on == 4 ? 'on' : ''}}" 
+              @click="handleClickMenu(4)">
+              <i class="icon icon-life-bouy"></i>
+              <span class="text">HELP</span>
+            </div>
+          </div>
+          <div class="history">
+            <div class="title">History</div>
+            <div class="list">
+              <div class="item ellipsis">bjstdmngbdr01/Acceptance_test/Acceptance_test</div>
+              <div class="item ellipsis">bjstdmngbdr02/Acceptance_test/</div>
+              <div class="item ellipsis">bjstdmngbdr03/Acceptance_test/Acceptance_testAcceptance_test</div>
+              <div class="item ellipsis">bjstdmngbdr04/Acceptance_test/</div>
+              <div class="item ellipsis">bjstdmngbdr05/Acceptance_test/</div>
+              <div class="item ellipsis">bjstdmngbdr06/Acceptance_test/</div>
+              <div class="item ellipsis">bjstdmngbdr07/Acceptance_test/</div>
+              <div class="item ellipsis">bjstdmngbdr08/Acceptance_test/</div>
+              <div class="item ellipsis">bjstdmngbdr09/Acceptance_test/</div>
+              <div class="item ellipsis">bjstdmngbdr010/Acceptance_test/</div>
+              <div class="item ellipsis">bjstdmngbdr011/Acceptance_test/</div>
+            </div>
+          </div>
+        </div>
+        <!-- 内容 -->
+        <div class="rooterView">
+          <agent></agent>
+        </div>
+      </div>
+    </div>
+    <!-- 底部 -->
+    <div class="footer flex">
+      © Copyright 2019 company
+    </div>
+  </div>
+</template>
+
+<script>
+import './index.scss'
+import agent from '@/views/agent/index.html'
+import clickoutside from '@/ui/clickoutside.js'
+
+export default {
+  name: 'main',
+  components: {
+    agent
+  },
+  data() {
+    return {
+      logoUrl: require('@/assets/images/logo.svg'),
+      headerUrl: require('@/assets/images/header.png'),
+      isExtendUser: false,
+      cls_angle: 'icon-angle-up',
+      cls_menu_on: 2
+    }
+  },
+  mounted() {
+    clickoutside.bind(this.refs['user'], this._hideDropdown)
+  },
+  methods: {
+    handleClickHeader() {
+      if ('icon-angle-up' === this.data.cls_angle) {
+        this._showDropdown() 
+      }
+      else {
+        this._hideDropdown()
+      }
+    },
+    handleClickMenu(type) {
+      this.data.cls_menu_on = type
+    },
+    _hideDropdown() {
+      let { data } = this
+      data.cls_angle = 'icon-angle-up'
+      data.isExtendUser = false
+    },
+    _showDropdown() {
+      let { data } = this
+      data.cls_angle = 'icon-angle-down'
+      data.isExtendUser = true
+    }
+  }
+}
+</script>
