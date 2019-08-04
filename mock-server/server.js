@@ -77,6 +77,6 @@ setTimeout(() => {
   splitLogOneDay()
   setInterval(() => {
     splitLogOneDay()
-  }, delay)
-}, day)
+  }, day)
+}, delay)
 
