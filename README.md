@@ -15,8 +15,9 @@
     npm install
     npm run server
     npm run dev
+    
+    浏览器打开 http://localhost:8085/index.html
 ```
-浏览器打开 http://localhost:8085/index.html
 
 ### 打包
 
