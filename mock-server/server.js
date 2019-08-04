@@ -31,7 +31,7 @@ server.use(router)
 server.listen(post, () => {
   console.log(`
     JSON Server is running \n
-    HomePage http://${host}:${post}
+    Home http://${host}:${post}
   `)
 })
 
