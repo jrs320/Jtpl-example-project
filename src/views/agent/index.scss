@@ -46,7 +46,7 @@
         background: #7fbc39;
       }
     }
-    .item3{
+    .item-num{
       background: #ffffff;
       .s-item{
         flex: 1;
@@ -65,7 +65,7 @@
       }
     }
     @media screen and (max-width: $--view-width-layout){
-      .item3{
+      .item-num{
         padding: 10px 0;
         flex-direction: column;
         .s-item{
@@ -123,7 +123,7 @@
         padding: 0 10px 0 36px;
       }
     }
-    .layoutChange{
+    .layout-change{
       justify-content: space-between;
       margin-right: 22px;
       .icon{
@@ -149,7 +149,7 @@
         margin-right: 9px;
         color: #a9a2a2;
       }
-      .osLogo{
+      .os-logo{
         width: 108px;
         height: 108px;
         img{
@@ -158,7 +158,7 @@
         }
       }
       @media screen and (max-width: $--view-width-layout){
-        .osLogo{
+        .os-logo{
           display: none;
         }
       }
@@ -168,7 +168,7 @@
         >div{
           width: 100%;
         }
-        .rowUp{
+        .row-up{
           height: 56px;
           .left{
             flex: 1.05
@@ -177,7 +177,7 @@
             flex: 1
           }
         }
-        .rowDown{
+        .row-down{
           padding: 13px 0 8px 0;
           .resourcesWrap{
             position: relative;

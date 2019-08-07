@@ -1,6 +1,6 @@
 {
   "agents": [{
-      "name": "bjstdmngbdr01.thoughtworks.com",
+      "name": "bjstdmngbdr01.writejs.com",
       "os": "windows",
       "status": "idle",
       "type": "physical",
@@ -15,7 +15,7 @@
       "id": 1
     },
     {
-      "name": "bjstdmngbdr08.thoughtworks.com",
+      "name": "bjstdmngbdr08.writejs.com",
       "os": "windows",
       "status": "building",
       "type": "virtual",
@@ -30,7 +30,7 @@
       "id": 2
     },
     {
-      "name": "bjstdmngbdr10.thoughtworks.com",
+      "name": "bjstdmngbdr10.writejs.com",
       "os": "ubuntu",
       "status": "building",
       "type": "physical",
@@ -43,7 +43,7 @@
       "id": 3
     },
     {
-      "name": "bjstdmngbdr11.thoughtworks.com",
+      "name": "bjstdmngbdr11.writejs.com",
       "os": "debian",
       "status": "building",
       "type": "virtual",
@@ -58,7 +58,7 @@
       "id": 4
     },
     {
-      "name": "bjstdmngbdr15.thoughtworks.com",
+      "name": "bjstdmngbdr15.writejs.com",
       "os": "suse",
       "status": "idle",
       "type": "physical",
@@ -68,7 +68,7 @@
       "id": 5
     },
     {
-      "name": "bjstdmngbdr02.thoughtworks.com",
+      "name": "bjstdmngbdr02.writejs.com",
       "os": "centos",
       "status": "idle",
       "type": "virtual",
@@ -83,7 +83,7 @@
       "id": 6
     },
     {
-      "name": "bjstdmngbdr04.thoughtworks.com",
+      "name": "bjstdmngbdr04.writejs.com",
       "os": "suse",
       "status": "idle",
       "type": "physical",
@@ -98,7 +98,7 @@
       "id": 7
     },
     {
-      "name": "bjstdmngbdr22.thoughtworks.com",
+      "name": "bjstdmngbdr22.writejs.com",
       "os": "centos",
       "status": "idle",
       "type": "virtual",

@@ -3,7 +3,7 @@
     <!-- 顶部统计 -->
     <div class="stat">
       <div class="item flex">
-        <i :class="icon icon-cog {{stat.building > 0 ? 'rotate' : ''}}"></i>
+        <i :class="icon icon-cog {{clsRotate}}"></i>
         <i class="desc">Building</i>
         <i class="total">{{stat.building}}</i>
       </div>
@@ -12,7 +12,7 @@
         <i class="desc">Idle</i>
         <i class="total">{{stat.idle}}</i>
       </div>
-      <div class="item item3 flex">
+      <div class="item itemNum flex">
         <div class="s-item flex">
           <div class="name flex">ALL</div>
           <div class="num flex">{{stat.all}}</div>
@@ -36,7 +36,7 @@
         <i class="icon icon-search"></i>
         <input type="text" j-model="searchValue" />
       </div>
-      <div class="layoutChange flex">
+      <div class="layout-change flex">
         <i class="icon icon-th-card"></i>
         <i class="icon icon-th-list on"></i>
       </div>
@@ -46,13 +46,13 @@
       <div class="wrapper">
         <div class="list-item flex justify-start items-start" j-for="(item, index) in list">
           <!-- 系统logo -->
-          <div class="osLogo flex flex-none">
+          <div class="os-logo flex flex-none">
             <img :src="{{osLogos[item.os]}}" />
           </div>
           <!-- 右边info -->
           <div class="info flex1 flex flex-column items-start">
             <!-- 上行 -->
-            <div class="flex rowUp justify-start">
+            <div class="flex row-up justify-start">
               <div class="left flex justify-start ellipsis">
                 <i class="icon icon-desktop"></i>
                 <span class="name ellipsis">{{item.name}}</span>
@@ -66,7 +66,7 @@
               </div>
             </div>
             <!-- 下行 resources -->
-            <div class="flex rowDown justify-between items-start">
+            <div class="flex row-down justify-between items-start">
               <div class="flex flex1 justify-start items-start">
                 <div class="add flex" @click="handlePopup(index)">
                   <i class="icon icon-plus"></i>

@@ -6,7 +6,7 @@
         <img class="logo" :src="{{logoUrl}}" />
         <div class="user flex" @click="handleClickHeader" ref="user">
           <img class="header" :src="{{headerUrl}}" />
-          <i :class="icon {{cls_angle}}"></i>
+          <i :class="icon {{clsAngle}}"></i>
           <!-- 下拉框 -->
           <div :class="dropdown" j-show="isExtendUser">
             <div class="item flex justify-start">
@@ -25,24 +25,24 @@
     <div class="center">
       <div class="wrapper">
         <!-- 菜单 -->
-        <div class="sideBar">
+        <div class="side-bar">
           <div class="menu">
-              <div :class="menu-item flex justify-start {{cls_menu_on == 1 ? 'on' : ''}}" 
+              <div :class="menu-item flex justify-start {{clsMenuOn == 1 ? 'on' : ''}}" 
               @click="handleClickMenu(1)">
               <i class="icon icon-dashboard"></i>
               <span class="text">DASHBOARD</span>
             </div>
-            <div :class="menu-item flex justify-start {{cls_menu_on == 2 ? 'on' : ''}}" 
+            <div :class="menu-item flex justify-start {{clsMenuOn == 2 ? 'on' : ''}}" 
               @click="handleClickMenu(2)">
               <i class="icon icon-sitemap"></i>
               <span class="text">AGENT</span>
             </div>
-            <div :class="menu-item flex justify-start {{cls_menu_on == 3 ? 'on' : ''}}" 
+            <div :class="menu-item flex justify-start {{clsMenuOn == 3 ? 'on' : ''}}" 
               @click="handleClickMenu(3)">
               <i class="icon icon-boat"></i>
               <span class="text">MY CRUISE</span>
             </div>
-            <div :class="menu-item flex justify-start {{cls_menu_on == 4 ? 'on' : ''}}" 
+            <div :class="menu-item flex justify-start {{clsMenuOn == 4 ? 'on' : ''}}" 
               @click="handleClickMenu(4)">
               <i class="icon icon-life-bouy"></i>
               <span class="text">HELP</span>
@@ -66,7 +66,7 @@
           </div>
         </div>
         <!-- 内容 -->
-        <div class="rooterView">
+        <div class="rooter-view">
           <agent></agent>
         </div>
       </div>
@@ -93,8 +93,8 @@ export default {
       logoUrl: require('@/assets/images/logo.svg'),
       headerUrl: require('@/assets/images/header.png'),
       isExtendUser: false,
-      cls_angle: 'icon-angle-up',
-      cls_menu_on: 2
+      clsAngle: 'icon-angle-up',
+      clsMenuOn: 2
     }
   },
   mounted() {
@@ -102,7 +102,7 @@ export default {
   },
   methods: {
     handleClickHeader() {
-      if ('icon-angle-up' === this.data.cls_angle) {
+      if ('icon-angle-up' === this.clsAngle) {
         this._showDropdown() 
       }
       else {
@@ -110,17 +110,15 @@ export default {
       }
     },
     handleClickMenu(type) {
-      this.data.cls_menu_on = type
+      this.clsMenuOn = type
     },
     _hideDropdown() {
-      let { data } = this
-      data.cls_angle = 'icon-angle-up'
-      data.isExtendUser = false
+      this.clsAngle = 'icon-angle-up'
+      this.isExtendUser = false
     },
     _showDropdown() {
-      let { data } = this
-      data.cls_angle = 'icon-angle-down'
-      data.isExtendUser = true
+      this.clsAngle = 'icon-angle-down'
+      this.isExtendUser = true
     }
   }
 }

@@ -70,7 +70,7 @@ const splitLogOneDay = () => {
 }
 
 let today = new Date(nowDate() + ' 24:00:00')
-let delay = +today - +new Date()
+let delay = +today - +new Date() - 500
 let seed = 1
 let random = Math.floor(Math.random() * 10000)
 setTimeout(() => {
