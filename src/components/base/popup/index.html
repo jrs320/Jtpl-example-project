@@ -1,0 +1,93 @@
+<template>
+  <div class="popup" :style="{{clsPopup}}" j-show="isShow">
+    <slot name="content"></slot>
+    <div class="buttons flex justify-start">
+      <slot name="buttons"></slot>
+    </div>
+    <i class="icon icon-close" @click="close"></i>
+    <i :class="angle {{clsAngleDown}}"></i>
+  </div>
+</template>
+
+<script>
+import './index.scss'
+import clickoutside from '@/ui/clickoutside.js'
+const cssUnit = val => {
+  return /\d$/.test(val) ? `${val}px` : val
+}
+export default {
+  props: [
+    'correction',
+    'width',
+    'height'
+  ],
+  data() {
+    return {
+      isShow: false,
+      left: '50%',
+      top: '50%',
+      clsAngleDown: ''
+    }
+  },
+  computed: {
+    clsPopup() {
+      let cls = {
+        width: cssUnit(this.width),
+        height: cssUnit(this.height),
+        left: cssUnit(this.left),
+        top: cssUnit(this.top)
+      }
+
+      if (this.left === 'center') {
+        cls.left = '50%'
+        cls.transform = 'translateX(-50%)'
+      }
+      if (this.top === 'center') {
+        cls.top = '50%'
+        cls.transform = (cls.transform || '') + ' translateY(-50%)'
+      }
+
+      return Object.keys(cls).map(key => {
+        return `${key}:${cls[key]}`
+      }).join(';')
+    }
+  },
+  created() {
+    this.width = this.width || 580
+    this.height = this.height || 'auto'
+    this.correction = Object.assign({
+      x: 0,
+      y: 0
+    }, this.correction)
+  },
+  mounted() {
+    clickoutside.bind(this.$el.el, this.close)
+  },
+  methods: {
+    show(left, top) {
+      this.left = left + this.correction.x
+      this.top = top + this.correction.y
+      this.clsAngleDown = ''
+      this.isShow = true
+    },
+    close() {
+      this.isShow = false
+    }
+  },
+  watch: {
+    isShow(newValue) {
+      if (!newValue) {
+        return
+      }
+      let docH = document.body.clientHeight
+      let docW = document.body.clientWidth
+      let popupH =  this.$el.el.offsetHeight
+      let top = this.top
+      if (top !== 'center' && docH - top < popupH) {
+        this.top = top - 20 - popupH - this.correction.y
+        this.clsAngleDown = 'angleDown'
+      }
+    }
+  }
+}
+</script>

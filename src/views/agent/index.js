@@ -1,10 +1,10 @@
-import popup from '@/components/popup/index.html'
+import popupAddRes from '@/components/popupAddRes/index.html'
 import { apiGetList, apiUpdate } from '@/api/agent'
 
 export default {
   name: 'agent',
   components: {
-    popup
+    popupAddRes
   },
   data() {
     return {
@@ -33,7 +33,7 @@ export default {
     }
   },
   mounted() {
-    this.popup = this.refs['popup']
+    this.popupAddRes = this.refs['popupAddRes']
     this.httpGetList('')
   },
   methods: {
@@ -60,12 +60,8 @@ export default {
       this.httpGetList(type[index])
     },
     handlePopup(index, event) {
-      let target = event.target.parentNode
-      while(!target.classList.contains('list-item')){
-        target = target.parentNode
-      }
-      this.popup.show({
-        target,
+      this.popupAddRes.show({
+        target: event.currentTarget,
         index
       })
     },

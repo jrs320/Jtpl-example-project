@@ -1,0 +1,72 @@
+<template>
+  <popup ref="popup" :correction="correction">
+    <template slot="content">
+      <div class="tip">
+        Separate multiple resource name with commas
+      </div>
+      <div class="input">
+        <input type="text" j-model="resources" />
+      </div>
+    </template>
+    <template slot="buttons">
+      <div class="button btn-primary flex" @click="handleAddRes">Add Resources</div> 
+      <div class="button btn-cancel flex" @click="handleClose">Cancel</div> 
+    </template>
+  </popup>
+</template>
+
+<script>
+import './index.scss'
+import popup from '@/components/base/popup/index.html'
+export default {
+  components: {
+    popup
+  },
+  data() {
+    return {
+      resources: '',
+      index: 0,
+      correction: {
+        x: -10,
+        y: 42
+      }
+    }
+  },
+  mounted() {
+    this.popup = this.refs['popup']
+  },
+  methods: {
+    show(opts = {}) {
+      let target = opts.target
+      let x = target.offsetLeft
+      let y = target.offsetTop
+      
+      target = target.parentNode
+      while (target.nodeName.toLowerCase() !== 'body') {
+        x -= target.scrollLeft
+        y -= target.scrollTop
+        let position = getComputedStyle(target).position
+        if (position && position !== 'static') {
+          x += target.offsetLeft
+          y += target.offsetTop
+        }
+        target = target.parentNode
+      }
+
+      this.popup.show(x, y)
+      this.index = opts.index
+      this.resources = ''
+    },
+    handleAddRes() {
+      this.resources = this.resources.trim()
+      if (this.resources) {
+        this.$emit('handleAddRes', this.resources.split(','), this.index)
+        this.handleClose()
+      }
+    },
+    handleClose() {
+      this.popup.close()
+    }
+  }
+}
+</script>

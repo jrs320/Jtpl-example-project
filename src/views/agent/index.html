@@ -12,7 +12,7 @@
         <i class="desc">Idle</i>
         <i class="total">{{stat.idle}}</i>
       </div>
-      <div class="item itemNum flex">
+      <div class="item item-num flex">
         <div class="s-item flex">
           <div class="name flex">ALL</div>
           <div class="num flex">{{stat.all}}</div>
@@ -87,7 +87,7 @@
         </div>
       </div>
     </div>
-    <popup @handleAddRes="handleAddRes" ref="popup"></popup>
+    <popup-add-res @handleAddRes="handleAddRes" ref="popupAddRes"></popup-add-res>
   </div>
 </template>
 

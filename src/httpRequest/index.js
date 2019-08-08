@@ -9,14 +9,14 @@ import qs from 'qs'
  * @param {*} opts
  */
 const request = opts => {
-  return window.fetch ? request_fetch(opts) : request_xhr(opts)
+  return window.fetch ? requestFetch(opts) : requestXhr(opts)
 }
 
 /**
  * fetch
  * @param {*} opts
  */
-const request_fetch = opts => {
+const requestFetch = opts => {
   let {
     url,
     params = {},
@@ -51,7 +51,7 @@ const request_fetch = opts => {
  * xhr
  * @param {*} opts 
  */
-const request_xhr = opts => {
+const requestXhr = opts => {
   return new Promise((resolve, reject) => {
     let {
       url,
