@@ -27,4 +27,4 @@
 
 ### 演示地址
 
-http://writejs.com/jtpl-example/index.html
+[线上演示](http://121.42.148.207/jtpl-example/index.html)
